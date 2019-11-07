@@ -5,7 +5,6 @@ namespace WpfApp1
 {
     public class StatisticDTO
     {
-        private UsageStatistics x;
 
         [Key]
         public int IdUsageStatistics { get; set; }
@@ -24,6 +23,12 @@ namespace WpfApp1
         public string ConvertedUnit { get; set; }
 
         public double? ConvertedValue { get; set; }
+
+
+
+        public StatisticDTO()
+        {
+        }
 
 
         public StatisticDTO(StatisticDTO item) {
@@ -46,5 +51,6 @@ namespace WpfApp1
             this.ConvertedUnit = item.ConvertedUnit;
             this.ConvertedValue = item.ConvertedValue;
         }
+
     }
 }

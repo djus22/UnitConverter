@@ -26,20 +26,18 @@ namespace WpfApp1
         string convertedType = null;
         double convertedVal = 0;
 
-        UsageStatisticsModel db = new UsageStatisticsModel();
-
-        //List<Unit> unitList = Unit.GetAllUnits();
+        private IStatisticsRepository repo;
 
         UnitManager unitManager = new UnitManager();
 
-        
 
-
-        public MainWindow()
+        public MainWindow(IStatisticsRepository repo)
         {
             InitializeComponent();
 
+            this.repo = repo;
             this.UnitTypeComboBox.ItemsSource = unitManager.GetTypes();
+            UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
         }
 
 
@@ -65,20 +63,16 @@ namespace WpfApp1
                 this.convertedValTextBox.Text = score.ToString();
             }
 
-            UsageStatistics item = new UsageStatistics();
+            this.repo.AddSingleStatistic(new StatisticDTO() {
+                Type = unitType,
+                BaseUnit = baseType,
+                BaseValue = baseVal,
+                ConvertedUnit = convertedType,
+                ConvertedValue = convertedVal,
+                Time = DateTime.Now
+            });
 
-            item.Type = unitType;
-            item.BaseUnit = baseType;
-            item.BaseValue = baseVal;
-            item.ConvertedUnit = convertedType;
-            item.ConvertedValue = convertedVal;
-            item.Time = DateTime.Now;
-
-
-            db.UsageStatistics.Add(item);
-            db.SaveChanges();
-
-            UsageStatisticsGrid.ItemsSource = db.UsageStatistics.ToList();
+            UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
         }
 
         private void getProperties()

@@ -1,14 +1,11 @@
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
+using System.ComponentModel.DataAnnotations;
+
 namespace WpfApp1
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class UsageStatistics
+    internal class UsageStatiticsEntity : TableEntity
     {
-        [Key]
         public int IdUsageStatistics { get; set; }
 
         public DateTime? Time { get; set; }
@@ -27,7 +24,9 @@ namespace WpfApp1
         public double? ConvertedValue { get; set; }
 
 
-        public UsageStatistics(StatisticDTO item)
+
+        public UsageStatiticsEntity() { }
+        public UsageStatiticsEntity(StatisticDTO item)
         {
             this.IdUsageStatistics = item.IdUsageStatistics;
             this.Time = item.Time;
@@ -36,10 +35,6 @@ namespace WpfApp1
             this.BaseValue = item.BaseValue;
             this.ConvertedUnit = item.ConvertedUnit;
             this.ConvertedValue = item.ConvertedValue;
-        }
-
-        public UsageStatistics()
-        {
         }
     }
 }
