@@ -40,6 +40,7 @@ namespace WpfApp1
             }
 
             builder.RegisterType<MainWindow>();
+            //builder.RegisterType<>
 
             return builder.Build();
         }

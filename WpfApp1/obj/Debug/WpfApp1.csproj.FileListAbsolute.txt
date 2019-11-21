@@ -73,3 +73,6 @@ C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\ko\System.Spatial.resourc
 C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\ru\System.Spatial.resources.dll
 C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\Units.SDK.dll
+C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\Units.SDK.pdb
+C:\Users\djus22\source\repos\WpfApp1\WpfApp1\bin\Debug\Units.SDK.dll.config

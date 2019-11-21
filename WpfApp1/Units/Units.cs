@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 namespace WpfApp1
 {
-    internal class Unit
+    internal class Unit : IUnits
     {
 
         public string type { get; set; }

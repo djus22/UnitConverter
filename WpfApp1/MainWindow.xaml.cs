@@ -28,13 +28,13 @@ namespace WpfApp1
 
         private IStatisticsRepository repo;
 
-        UnitManager unitManager = new UnitManager();
+        UnitManager unitManager;
 
 
         public MainWindow(IStatisticsRepository repo)
         {
             InitializeComponent();
-
+            this.unitManager = new UnitManager();
             this.repo = repo;
             this.UnitTypeComboBox.ItemsSource = unitManager.GetTypes();
             UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
@@ -53,12 +53,11 @@ namespace WpfApp1
 
         private void CountButtonClicked(object sender, RoutedEventArgs e)
         {
-            Converter converter = new Converter();
             double score;
 
             getProperties();
 
-            if (converter.convert(baseType, baseVal, convertedType, out score))
+            if (this.unitManager.convert(baseType, baseVal, convertedType, out score))
             {
                 this.convertedValTextBox.Text = score.ToString();
             }
