@@ -1,0 +1,21 @@
+﻿@model IEnumerable<WpfApp1.UnitsContainer>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Konwerter jednostek</h1>
+
+@foreach (WpfApp1.UnitsContainer container in Model)
+{
+    using (Ajax.BeginForm("Convert",
+        new { converterType = container.GetType().AssemblyQualifiedName },
+        new AjaxOptions() { UpdateTargetId = container.Name + "result" }))
+    {
+        <div> @container.Name </div>
+        @Html.DropDownList("unitFrom", new SelectList(container._unitList))
+        @Html.TextBox("valueToConvert")
+        @Html.DropDownList("unitTo", new SelectList(container._unitList))
+        <button type="submit"> Konwertuj </button>
+        <label id="@(container.Name + "result")"></label>
+    }
+}

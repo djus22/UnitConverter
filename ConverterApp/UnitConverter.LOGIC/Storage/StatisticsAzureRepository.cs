@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace WpfApp1
 {
-    internal class StatisticsAzureRepository : IStatisticsRepository
+    public class StatisticsAzureRepository : IStatisticsRepository
     {
 
         private CloudTable table;

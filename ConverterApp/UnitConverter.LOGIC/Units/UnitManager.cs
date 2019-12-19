@@ -18,7 +18,7 @@ namespace WpfApp1
         }
 
         public List<UnitsContainer> GetContainers() {
-            return scope.Resolve<IEnumerable<UnitsContainer>>().ToList();
+            return this.scope.Resolve<IEnumerable<UnitsContainer>>().ToList();
         }
 
     }

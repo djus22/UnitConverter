@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    class StatisticsLocalDBRepository : IStatisticsRepository
+    public class StatisticsLocalDBRepository : IStatisticsRepository
     {
         public void AddSingleStatistic(StatisticDTO item)
         {

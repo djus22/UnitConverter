@@ -92,17 +92,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Storage\IStatisticsRepository.cs" />
-    <Compile Include="Storage\StatisticDTO.cs" />
-    <Compile Include="Storage\StatisticsAzureRepository.cs" />
-    <Compile Include="Storage\StatisticsLocalDBRepository.cs" />
-    <Compile Include="Units\LengthUnits.cs" />
-    <Compile Include="Units\TemperatureUnits.cs" />
-    <Compile Include="Units\UnitManager.cs" />
-    <Compile Include="Model\UsageStatistic.cs" />
-    <Compile Include="Model\UsageStatisticsModel.cs" />
-    <Compile Include="Model\UsageStatiticsEntity.cs" />
-    <Compile Include="Units\WeightUnits.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -149,6 +138,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UnitConverter.LOGIC\UnitConverter.LOGIC.csproj">
+      <Project>{34a98158-13e0-49c8-8866-532f99cc2d68}</Project>
+      <Name>UnitConverter.LOGIC</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Units.SDK\Units.SDK.csproj">
       <Project>{F754D367-9034-4A53-9A22-455DB64C9B76}</Project>
       <Name>Units.SDK</Name>
