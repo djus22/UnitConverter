@@ -20,6 +20,21 @@ namespace WpfApp1
             return null;
         }
 
+        public List<string> getNames(string type) {
+
+            var ret = new List<string>();
+
+            foreach (Unit unit in _unitList)
+            {
+                if (unit.type == type)
+                {
+                    ret.Add(unit.name);
+                }
+            }
+
+            return ret;
+        }
+
         public bool convert(string rawType, double rawValue, string convertedType, out double convertedValue)
         {
             if (rawType == convertedType)

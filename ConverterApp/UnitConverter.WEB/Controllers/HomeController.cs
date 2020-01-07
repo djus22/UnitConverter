@@ -5,6 +5,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WpfApp1;
+using WpfApp1.Units;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace UnitConverter.WEB.Controllers
 {
@@ -34,7 +38,8 @@ namespace UnitConverter.WEB.Controllers
         public double Convert(string baseType, string convertedType, string baseVal,
             string containerType)
         {
-            UnitsContainer container = this.scope.Resolve(Type.GetType(containerType)) as UnitsContainer;
+            var containersList = this.manager.GetContainers();
+            UnitsContainer container = containersList.Find(m => m.Name == containerType) as UnitsContainer;
 
             double score;
             double baseValue = double.Parse(baseVal);
@@ -54,11 +59,10 @@ namespace UnitConverter.WEB.Controllers
             return score;
         }
 
-        public ActionResult About()
+        public ActionResult History()
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(repo.GetAllStatistics());
         }
 
         public ActionResult Contact()

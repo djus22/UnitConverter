@@ -33,7 +33,6 @@ namespace WpfApp1
 
         List<UnitsContainer> unitsContainers;
 
-
         public MainWindow(IStatisticsRepository repo, UnitManager manager)
         {
             InitializeComponent();

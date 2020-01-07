@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WpfApp1.StatisticDTO>
+
+@{
+    ViewBag.Title = "Historia zapytan";
+}
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayName("Data konwersji")</th>
+        <th>@Html.DisplayName("Typ jednostek")</th>
+        <th>@Html.DisplayName("Jednostka bazowa")</th>
+        <th>@Html.DisplayName("Wartosc bazowa")</th>
+        <th>@Html.DisplayName("Jednostka docelowa")</th>
+        <th>@Html.DisplayName("Wartosc docelowa")</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Time)</td>
+        <td>@Html.DisplayFor(modelItem => item.Type)</td>
+        <td>@Html.DisplayFor(modelItem => item.BaseUnit)</td>
+        <td>@Html.DisplayFor(modelItem => item.BaseValue)</td>
+        <td>@Html.DisplayFor(modelItem => item.ConvertedUnit)</td>
+        <td>@Html.DisplayFor(modelItem => item.ConvertedValue)</td>
+    </tr>
+    }
+
+</table>

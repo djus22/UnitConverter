@@ -45,8 +45,8 @@ namespace WpfApp1
             builder.RegisterType<MainWindow>();
             builder.RegisterType<UnitManager>();
 
-
-            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+            var assembly = typeof(UnitManager).Assembly;
+            builder.RegisterAssemblyTypes(assembly)
                 .Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
 
             RegisterPlugins(builder);

@@ -49,7 +49,7 @@ namespace UnitConverter.WEB
             var assembly = typeof(UnitManager).Assembly;
 
             builder.RegisterAssemblyTypes(assembly)
-                .Where(x => x.Name.EndsWith("Units")).AsImplementedInterfaces().AsSelf();
+                .Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
 
             RegisterPlugins(builder);
 
@@ -64,7 +64,7 @@ namespace UnitConverter.WEB
 
             foreach (Assembly ass in assemblies)
             {
-                builder.RegisterAssemblyTypes(ass).Where(x => x.Name.EndsWith("Units")).AsImplementedInterfaces().AsSelf();
+                builder.RegisterAssemblyTypes(ass).Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
             }
 
         }
