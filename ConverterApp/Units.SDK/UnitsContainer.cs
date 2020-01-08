@@ -47,7 +47,7 @@ namespace WpfApp1
             double inBase = GetUnit(rawType).toBase(rawValue);
 
             // convert from base value
-            convertedValue = GetUnit(convertedType).fromBase(inBase);
+            convertedValue = Math.Round(GetUnit(convertedType).fromBase(inBase), 2);
 
 
             return true;
