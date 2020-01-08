@@ -25,7 +25,7 @@ namespace WpfApp1
             IContainer container = CreateContainer();
 
             this.MainWindow = container.Resolve<MainWindow>();
-            container.Resolve<UnitManager>();
+            //container.Resolve<UnitManager>();
             this.MainWindow.Show();
         }
 
@@ -33,38 +33,40 @@ namespace WpfApp1
         {
             var builder = new ContainerBuilder();
 
-            if (ConfigurationManager.AppSettings["StatisticsRepository"] == "Azure")
-            {
-                builder.RegisterType<StatisticsAzureRepository>().As<IStatisticsRepository>();
-            }
-            else
-            {
-                builder.RegisterType<StatisticsLocalDBRepository>().As<IStatisticsRepository>();
-            }
+            //if (ConfigurationManager.AppSettings["StatisticsRepository"] == "Azure")
+            //{
+            //    builder.RegisterType<StatisticsAzureRepository>().As<IStatisticsRepository>();
+            //}
+            //else
+            //{
+            //    builder.RegisterType<StatisticsLocalDBRepository>().As<IStatisticsRepository>();
+            //}
 
             builder.RegisterType<MainWindow>();
-            builder.RegisterType<UnitManager>();
+            //builder.RegisterType<UnitManager>();
 
-            var assembly = typeof(UnitManager).Assembly;
-            builder.RegisterAssemblyTypes(assembly)
-                .Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
+            //var assembly = typeof(UnitManager).Assembly;
+            //builder.RegisterAssemblyTypes(assembly)
+            //    .Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
 
-            RegisterPlugins(builder);
+            //RegisterPlugins(builder);
+
+            builder.RegisterType<ContainersApi>();
 
             return builder.Build();
         }
 
-        private static void RegisterPlugins(ContainerBuilder builder)
-        {
-            string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string pluginDir = Path.Combine(assemblyDir, "plugins");
+        //private static void RegisterPlugins(ContainerBuilder builder)
+        //{
+        //    string assemblyDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //    string pluginDir = Path.Combine(assemblyDir, "plugins");
 
-            var assemblies = Directory.GetFiles(pluginDir, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
+        //    var assemblies = Directory.GetFiles(pluginDir, "*Plugin.dll").Select(Assembly.LoadFrom).ToList();
 
-            foreach (Assembly ass in assemblies) {
-                builder.RegisterAssemblyTypes(ass).Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
-            }
+        //    foreach (Assembly ass in assemblies) {
+        //        builder.RegisterAssemblyTypes(ass).Where(x => x.Name.EndsWith("Units")).As<UnitsContainer>();
+        //    }
             
-        }
+        //}
     }
 }

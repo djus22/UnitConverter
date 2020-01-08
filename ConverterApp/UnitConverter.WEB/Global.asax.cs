@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,9 +8,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using UnitConverter.WEB.App_Start;
 using WpfApp1;
 
 namespace UnitConverter.WEB
@@ -20,6 +23,10 @@ namespace UnitConverter.WEB
         {
             IContainer container = CreateContainer();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -33,6 +40,7 @@ namespace UnitConverter.WEB
             var builder = new ContainerBuilder();
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
 
             if (ConfigurationManager.AppSettings["StatisticsRepository"] == "Azure")
             {

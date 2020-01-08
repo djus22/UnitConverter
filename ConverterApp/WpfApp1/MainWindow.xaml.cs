@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.Units;
+using static WpfApp1.ContainersApi;
+//using WpfApp1.Units;
 
 namespace WpfApp1
 {
@@ -29,17 +30,21 @@ namespace WpfApp1
         double convertedVal = 0;
 
 
-        private IStatisticsRepository repo;
+        //private istatisticsrepository repo;
+        private ContainersApi containers;
 
-        List<UnitsContainer> unitsContainers;
+        //List<UnitsContainer> unitsContainers;
 
-        public MainWindow(IStatisticsRepository repo, UnitManager manager)
+        //public MainWindow(IStatisticsRepository repo, UnitManager manager)
+        public MainWindow(ContainersApi containers)
         {
             InitializeComponent();
-            this.repo = repo;
-            this.unitsContainers = manager.GetContainers();
-            this.UnitTypeComboBox.ItemsSource = this.unitsContainers;
-            UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
+            //this.repo = repo;
+            //this.unitsContainers = manager.GetContainers();
+            //this.UnitTypeComboBox.ItemsSource = this.unitsContainers;
+            //UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
+            this.containers = containers;
+            this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -58,21 +63,23 @@ namespace WpfApp1
 
             getProperties();
 
-            if (currentContainer.convert(baseType, baseVal, convertedType, out score))
+            
+
+            if (currentContainer.Convert(baseType, baseVal, convertedType, out score))
             {
                 this.convertedValTextBox.Text = score.ToString();
             }
+            //this.repo.AddSingleStatistic(new StatisticDTO() {
+            //    Type = unitType,
+            //    BaseUnit = baseType,
+            //    BaseValue = baseVal,
+            //    ConvertedUnit = convertedType,
+            //    ConvertedValue = convertedVal,
+            //    Time = DateTime.Now
+            //});
 
-            this.repo.AddSingleStatistic(new StatisticDTO() {
-                Type = unitType,
-                BaseUnit = baseType,
-                BaseValue = baseVal,
-                ConvertedUnit = convertedType,
-                ConvertedValue = convertedVal,
-                Time = DateTime.Now
-            });
+            //UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
 
-            UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
         }
 
         private void getProperties()
