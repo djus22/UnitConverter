@@ -52,7 +52,15 @@ namespace UnitConverter.WEB.Controllers
                 Time = DateTime.Now
             });
 
+
             return score;
+        }
+
+        [Route("api/containers/getallstatistics")]
+        [HttpGet]
+        public IEnumerable<StatisticDTO> GetAllStatistics()
+        {
+            return repo.GetAllStatistics();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -40,8 +41,7 @@ namespace CurrencyPlugin
 
                     if (rate != null)
                     {
-                        string rate_str = rate.Mid.Replace('.', ',');
-                        return double.Parse(rate_str);
+                        return double.Parse(rate.Mid, CultureInfo.InvariantCulture);
                     }
                 }
             }

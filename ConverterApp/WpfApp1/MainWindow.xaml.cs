@@ -43,8 +43,10 @@ namespace WpfApp1
             //this.unitsContainers = manager.GetContainers();
             //this.UnitTypeComboBox.ItemsSource = this.unitsContainers;
             //UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
+
             this.containers = containers;
             this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
+            UsageStatisticsGrid.ItemsSource = containers.GetAllStatistics();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -79,6 +81,7 @@ namespace WpfApp1
             //});
 
             //UsageStatisticsGrid.ItemsSource = this.repo.GetAllStatistics();
+            UsageStatisticsGrid.ItemsSource = containers.GetAllStatistics();
 
         }
 

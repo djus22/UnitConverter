@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -46,10 +47,24 @@ namespace WpfApp1
 
                 string valueString = client.DownloadString(urlWithParameters);
 
-                return double.Parse(valueString);
+                return double.Parse(valueString, CultureInfo.InvariantCulture);
             }
         }
 
+        public IEnumerable<StatisticsTable> GetAllStatistics()
+        {
+            string url = @"http://localhost:56663/api/containers/getallstatistics?";
+
+            using (WebClient client = new WebClient())
+            {
+                byte[] jsonData = client.DownloadData(url);
+                string json = Encoding.UTF8.GetString(jsonData);
+
+                StatisticsTable[] statistics = JsonConvert.DeserializeObject<StatisticsTable[]>(json);
+
+                return new List<StatisticsTable>(statistics);
+            }
+        }
 
         public class UnitsContainer
         {
@@ -66,10 +81,25 @@ namespace WpfApp1
 
         public class Unit
         {
-            public string type { get; set; }
             public string name { get; set; }
-            public Func<double, double> toBase { get; set; }
-            public Func<double, double> fromBase { get; set; }
+        }
+
+        public class StatisticsTable
+        {
+            public int IdUsageStatistics { get; set; }
+
+            public DateTime? Time { get; set; }
+
+            public string Type { get; set; }
+
+            public string BaseUnit { get; set; }
+
+            public double? BaseValue { get; set; }
+
+            public string ConvertedUnit { get; set; }
+
+            public double? ConvertedValue { get; set; }
         }
     }
+
 }
