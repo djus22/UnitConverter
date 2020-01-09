@@ -10,8 +10,8 @@ namespace WpfApp1.Units
     {
         private List<Unit> _units;
 
-        public override List<Unit> _unitList => _units;
         public override string Name => "Masa";
+        public override List<Unit> _unitList { get { return _units; } set { _units = _unitList; } }
 
         public WeightUnits() {
             this._units = new List<Unit> {

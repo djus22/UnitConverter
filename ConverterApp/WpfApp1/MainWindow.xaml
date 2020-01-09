@@ -9,7 +9,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"/>
-            <RowDefinition Height="59*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
         <WrapPanel Grid.Row="0" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="792">
             <Grid>
@@ -56,7 +57,35 @@
             </Grid>
 
         </WrapPanel>
-        <DataGrid Name="UsageStatisticsGrid" Grid.Row="1">
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="792">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Unit group" Width="100" VerticalAlignment="Top"/>
+                <ComboBox Name="AddUnitTypeComboBox" SelectedItem="{Binding Path=UnitsContainers}" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="AddUnitTypeComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Base Type" Width="100" VerticalAlignment="Top"/>
+                <Label Name="BaseTypeLabel"  HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="100" Height="23"/>
+            </Grid>
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Base to New Ratio)" Width="130" VerticalAlignment="Top"/>
+                <TextBox Name="RatioTextBox" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="130" TextChanged="TextBox_TextChanged"/>
+            </Grid>
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="New Unit Type" Width="100" VerticalAlignment="Top"/>
+                <TextBox Name="NewUnitTextBox" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TextChanged="convertedValTextBox_TextChanged"/>
+            </Grid>
+            <Grid>
+                <Button Content="Add Unit" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0"  VerticalAlignment="Top" Width="100" Click="AddUnitButtonClicked"/>
+            </Grid>
+
+        </WrapPanel>
+        <DataGrid Name="UsageStatisticsGrid" Grid.Row="2">
 
 
         </DataGrid>

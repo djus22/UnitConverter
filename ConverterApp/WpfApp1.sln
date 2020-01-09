@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitConverter.WEB", "UnitCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyPlugin", "..\CurrencyPlugin\CurrencyPlugin.csproj", "{A1536043-65EC-48F3-B759-EBA8661141C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterPlugin", "..\ConverterPlugin\ConverterPlugin\ConverterPlugin.csproj", "{F31B9B0B-8E2F-47C4-BC3A-240F1AEE27A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A1536043-65EC-48F3-B759-EBA8661141C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1536043-65EC-48F3-B759-EBA8661141C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1536043-65EC-48F3-B759-EBA8661141C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F31B9B0B-8E2F-47C4-BC3A-240F1AEE27A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31B9B0B-8E2F-47C4-BC3A-240F1AEE27A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31B9B0B-8E2F-47C4-BC3A-240F1AEE27A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31B9B0B-8E2F-47C4-BC3A-240F1AEE27A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

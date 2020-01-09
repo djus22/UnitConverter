@@ -62,5 +62,15 @@ namespace UnitConverter.WEB.Controllers
         {
             return repo.GetAllStatistics();
         }
+
+        [Route("api/containers/addUnit")]
+        [HttpGet]
+        public bool AddUnit(string containerType, string ratio, string newType)
+        {
+            var containersList = this.manager.GetContainers();
+            UnitsContainer container = containersList.Find(m => m.Name == containerType) as UnitsContainer;
+
+            return container.AddUnit(ratio, newType);
+        }
     }
 }

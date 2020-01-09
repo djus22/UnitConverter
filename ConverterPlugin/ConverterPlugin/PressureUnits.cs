@@ -12,6 +12,8 @@ namespace ConverterPlugin
         private List<Unit> _units;
         public override string Name => "Cisnienie";
 
+        public override List<Unit> _unitList { get { return _units; } set { _units = _unitList; } }
+
         public PressureUnits() {
             _units = new List<Unit> {
                 new Unit(this.Name, "Pa", x => x , x => x),
@@ -27,6 +29,5 @@ namespace ConverterPlugin
             };
         }
 
-        public override List<Unit> _unitList => _units;
     }
 }

@@ -77,6 +77,28 @@ namespace WpfApp1
                 score = ContainersApi.Convert(baseType, convertedType, baseValue, Name);
                 return true;
             }
+
+            internal bool AddUnit(string ratio, string newType)
+            {
+                return ContainersApi.AddUnit(Name, ratio, newType);
+            }
+        }
+
+        private static bool AddUnit(string name, string ratio, string newType)
+        {
+            string url = @"http://localhost:56663/api/containers/addUnit?";
+
+            NameValueCollection queryString = HttpUtility.ParseQueryString(string.Empty);
+            queryString.Add("containerType", name);
+            queryString.Add("ratio", ratio);
+            queryString.Add("newType", newType);
+
+            using (WebClient client = new WebClient())
+            {
+                string urlWithParameters = url + queryString.ToString();
+
+                return bool.Parse(client.DownloadString(urlWithParameters));
+            }
         }
 
         public class Unit

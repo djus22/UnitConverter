@@ -16,6 +16,8 @@ namespace CurrencyPlugin
 
         public override string Name => "Waluta";
 
+        public override List<Unit> _unitList { get { return _units; } set { _units = _unitList; } }
+
         public CurrencyUnits() {
             _units = new List<Unit> {
                 new Unit(this.Name, "PL", x => x, x => x),
@@ -23,7 +25,7 @@ namespace CurrencyPlugin
             };
         }
 
-        public override List<Unit> _unitList => _units;
+        
 
         private double getRate(string currency)
         {

@@ -9,7 +9,7 @@ namespace WpfApp1
     public abstract class UnitsContainer
     {
         public abstract string Name { get; }
-        public abstract List<Unit> _unitList { get; }
+        public abstract List<Unit> _unitList { get; set; }
 
         public Unit GetUnit(string name)
         {
@@ -53,5 +53,18 @@ namespace WpfApp1
             return true;
         }
 
+        public bool AddUnit(string ratio, string newType)
+        {
+            if (_unitList.Exists(x => x.name == newType))
+            {
+                return false;
+            }
+
+            double ratio_num = double.Parse(ratio);
+
+            _unitList.Add(new Unit(Name, newType, x => x * ratio_num, x => x / ratio_num));
+
+            return true;
+        }
     }
 }
