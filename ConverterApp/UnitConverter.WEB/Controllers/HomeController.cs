@@ -71,5 +71,11 @@ namespace UnitConverter.WEB.Controllers
 
             return View();
         }
+
+        public string deleteLastConvert()
+        {
+            repo.RemoveLastRow();
+            return "Removed";
+        }
     }
 }

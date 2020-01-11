@@ -55,7 +55,10 @@
             <Grid>
                 <Button Content="Count" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0"  VerticalAlignment="Top" Width="100" Click="CountButtonClicked"/>
             </Grid>
-
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Remove Last Convert:" Width="100" VerticalAlignment="Top"/>
+                <Button Content="Remove" HorizontalAlignment="Left" Height="23" Margin="10,30,0,0"  VerticalAlignment="Top" Width="100" Click="RemoveButtonClicked"/>
+            </Grid>
         </WrapPanel>
         <WrapPanel Grid.Row="1" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="792">
             <Grid>

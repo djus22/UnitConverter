@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace WpfApp1
 {
-    public class StatisticsAzureRepository : IStatisticsRepository
+    internal class StatisticsAzureRepository : IStatisticsRepository
     {
 
         private CloudTable table;
@@ -43,21 +43,6 @@ namespace WpfApp1
                     ConvertedUnit = x.ConvertedUnit,
                     ConvertedValue = x.ConvertedValue
                 }).ToList();
-        }
-
-        public void RemoveLastRow()
-        {
-            TableQuery<UsageStatiticsEntity> statisticsQuery = new TableQuery<UsageStatiticsEntity>();
-
-            var toDelete = table.ExecuteQuery(statisticsQuery).OrderByDescending(x => x.Time).FirstOrDefault();
-
-            if (toDelete != null)
-            {
-                TableOperation delete = TableOperation.Delete(toDelete);
-                table.Execute(delete);
-            }
-
-
         }
     }
 }

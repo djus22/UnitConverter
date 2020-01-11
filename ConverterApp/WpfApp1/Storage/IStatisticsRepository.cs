@@ -11,7 +11,5 @@ namespace WpfApp1
         void AddSingleStatistic(StatisticDTO item);
         IEnumerable<StatisticDTO> GetAllStatistics();
 
-        void RemoveLastRow();
-
     }
 }

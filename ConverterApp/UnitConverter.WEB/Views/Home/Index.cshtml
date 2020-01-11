@@ -15,4 +15,7 @@
         <button type="submit"> Konwertuj </button>
         <label id="@(container.Name + "result")"></label>
     }
+    
 }
+@Ajax.ActionLink("Remove Last Conversion", "deleteLastConvert", "Home", new AjaxOptions() { UpdateTargetId = "Row_removed"})
+<label id="@("Row_removed")"></label>

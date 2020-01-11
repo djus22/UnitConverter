@@ -78,13 +78,9 @@ namespace WpfApp1
                 return true;
             }
 
-            internal bool AddUnit(string ratio, string newType)
-            {
-                return ContainersApi.AddUnit(Name, ratio, newType);
-            }
         }
 
-        private static bool AddUnit(string name, string ratio, string newType)
+        public void AddUnit(string name, string ratio, string newType)
         {
             string url = @"http://localhost:56663/api/containers/addUnit?";
 
@@ -96,8 +92,20 @@ namespace WpfApp1
             using (WebClient client = new WebClient())
             {
                 string urlWithParameters = url + queryString.ToString();
+                //return bool.Parse(client.DownloadString(urlWithParameters));
+                client.DownloadString(urlWithParameters);
+            }
+        }
 
-                return bool.Parse(client.DownloadString(urlWithParameters));
+
+
+        public void DeleteLastRow()
+        {
+            string url = @"http://localhost:56663/api/containers/deleteLastConvert";
+
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadData(url);
             }
         }
 

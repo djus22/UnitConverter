@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    public class StatisticsLocalDBRepository : IStatisticsRepository
+    class StatisticsLocalDBRepository : IStatisticsRepository
     {
         public void AddSingleStatistic(StatisticDTO item)
         {
@@ -28,19 +28,6 @@ namespace WpfApp1
                     ConvertedUnit = x.ConvertedUnit,
                     ConvertedValue = x.ConvertedValue
                 }).ToList();
-            }
-        }
-
-        public void RemoveLastRow()
-        {
-            using (UsageStatisticsModel db = new UsageStatisticsModel())
-            {
-                var row = db.UsageStatistics.OrderByDescending(x => x.Time).FirstOrDefault();
-
-                if (row != null) {
-                    db.UsageStatistics.Remove(row);
-                    db.SaveChanges();
-                }
             }
         }
     }

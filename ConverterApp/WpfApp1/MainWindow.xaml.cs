@@ -85,11 +85,26 @@ namespace WpfApp1
             UsageStatisticsGrid.ItemsSource = containers.GetAllStatistics();
 
         }
+        private void RemoveButtonClicked(object sender, RoutedEventArgs e)
+        {
+            containers.DeleteLastRow();
+            UsageStatisticsGrid.ItemsSource = containers.GetAllStatistics();
+
+        }
 
         private void AddUnitButtonClicked(object sender, RoutedEventArgs e)
         {
-            var container = (UnitsContainer)AddUnitTypeComboBox.SelectedValue;
-            container.AddUnit(RatioTextBox.Text, NewUnitTextBox.Text);
+            //var selected = (UnitsContainer)AddUnitTypeComboBox.SelectedValue;
+            //var containersList = this.containers.GetContainers();
+            //var current = containersList.Find(x => x.Name == selected.Name) as UnitsContainer;
+            //if (current != null)
+            //{
+            //    current.AddUnit(RatioTextBox.Text, NewUnitTextBox.Text);
+            //    this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
+            //}
+
+            var selected = (UnitsContainer)AddUnitTypeComboBox.SelectedValue;
+            containers.AddUnit(selected.Name, RatioTextBox.Text, NewUnitTextBox.Text);
             this.UnitTypeComboBox.ItemsSource = containers.GetContainers();
         }
 
@@ -106,8 +121,8 @@ namespace WpfApp1
 
         private void UnitTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-            var currentContainer = (UnitsContainer)UnitTypeComboBox.SelectedValue;
+            var box = UnitTypeComboBox;
+            var currentContainer = box.SelectedValue != null ? (UnitsContainer)box.SelectedValue : (UnitsContainer)box.Items[0];
             unitType = currentContainer.Name;
 
             List<Unit> units = currentContainer._unitList;
